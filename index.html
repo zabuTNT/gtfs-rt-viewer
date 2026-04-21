@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GTFS-RT viewer</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1>GTFS-RT viewer</h1>
+        <p class="subtitle">
+          Carica un file binario <code>FeedMessage</code> (estensione tipica
+          <code>.pb</code>). Decodifica con lo schema ufficiale GTFS-realtime e
+          mostra il JSON.
+        </p>
+      </header>
+
+      <section class="toolbar">
+        <label class="file-btn">
+          <input
+            id="file-input"
+            type="file"
+            accept=".pb,.bin,application/octet-stream,*/*"
+          />
+          Scegli file…
+        </label>
+        <span id="file-name" class="file-name">Nessun file</span>
+        <span id="meta" class="meta" hidden></span>
+      </section>
+
+      <div id="error" class="error" role="alert" hidden></div>
+
+      <main class="main">
+        <pre id="json-out" class="json-out" tabindex="0"><code id="json-code">Carica un feed per vedere il JSON qui.</code></pre>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
