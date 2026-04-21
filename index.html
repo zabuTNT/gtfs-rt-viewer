@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,9 +11,9 @@
       <header class="header">
         <h1>GTFS-RT viewer</h1>
         <p class="subtitle">
-          Carica un file binario <code>FeedMessage</code> (estensione tipica
-          <code>.pb</code>). Decodifica con lo schema ufficiale GTFS-realtime e
-          mostra il JSON.
+          Load a binary <code>FeedMessage</code> file (e.g. <code>.pb</code>) or
+          paste a URL that returns the protobuf. Decodes with the official
+          GTFS-realtime schema and shows JSON.
         </p>
       </header>
 
@@ -24,16 +24,29 @@
             type="file"
             accept=".pb,.bin,application/octet-stream,*/*"
           />
-          Scegli file…
+          Choose file…
         </label>
-        <span id="file-name" class="file-name">Nessun file</span>
+        <span id="source-label" class="source-label">No source</span>
         <span id="meta" class="meta" hidden></span>
+      </section>
+
+      <section class="url-row" aria-label="Load from URL">
+        <input
+          id="url-input"
+          class="url-input"
+          type="url"
+          inputmode="url"
+          autocomplete="url"
+          placeholder="https://example.com/gtfs-rt/tripupdates.pb"
+          spellcheck="false"
+        />
+        <button type="button" id="url-load" class="url-btn">Load URL</button>
       </section>
 
       <div id="error" class="error" role="alert" hidden></div>
 
       <main class="main">
-        <pre id="json-out" class="json-out" tabindex="0"><code id="json-code">Carica un feed per vedere il JSON qui.</code></pre>
+        <pre id="json-out" class="json-out" tabindex="0"><code id="json-code">Load a file or URL to see JSON here.</code></pre>
       </main>
     </div>
     <script type="module" src="/src/main.js"></script>
